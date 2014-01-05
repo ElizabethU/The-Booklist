@@ -1,0 +1,32 @@
+<h1>Books!</h1>
+<table>
+  <!-- Sorted by popularity! Much excite! -->
+  <!-- .sort_by{|book| book.bookcases.count }.reverse -->
+  <% @books.each do |book| %>
+  <tr>
+    <td>
+      <div class="cover_picture">
+        <img src=<%= book.image_link %> >
+      </div>
+    </td>
+    <td>
+      <div class="book_info">
+        <h3><%= book.title %></h3>
+        by <%= book.authors %>
+      </div>
+    <% if current_user %>
+      <%= form_tag books_path do %>
+        <%= hidden_field_tag "isbn", book.isbn %>
+        <%= hidden_field_tag "bookcase_id", current_user.bookcases.where(name: "Wishlist").first.id %>
+        <%= submit_tag "Add to Wishlist" %>
+      <% end %>
+      <%= form_tag books_path do %>
+        <%= hidden_field_tag "isbn", book.isbn %>
+        <%= hidden_field_tag "bookcase_id", current_user.bookcases.where(name: "Completed Books").first.id %>
+        <%= submit_tag "Add to Completed Books" %>
+      <% end %>
+    <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>

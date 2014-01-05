@@ -1,0 +1,25 @@
+<h1><%= link_to @bookcase.user.name, @bookcase.user %>'s <%= @bookcase.name %></h1>
+<p>Book count: <%= @bookcase.books.count %></p>
+  <table>
+  <% @bookcase.books.each do |book| %>
+  <tr>
+    <td>
+      <div class="cover_picture">
+        <img src=<%= book.image_link %> >
+      </div>
+    </td>
+    <td>
+      <div class="book_info">
+        <h3><%= book.title %></h3>
+        <p>by <%= book.authors %></p>
+        <p>published <%= book.published_date %></p>
+        <p><%= book.description %></p>
+      </div>
+    <% if current_user %>
+      <p>Move to other bookcase</p>
+      <p>Remove book</p>
+    <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>

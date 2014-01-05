@@ -1,0 +1,19 @@
+<h1>Other Book Collectors</h1>
+  <p>Search for other friends?<p>
+  <%= form_tag search_users_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, nil, placeholder: "You have friends?" %>
+    <%= submit_tag "Let's find them!" %>
+  </p>
+  <% end %>
+<% @users.each do |user| %>
+  <p>
+    <strong><%= link_to user.name, user %></strong>
+    <% unless user.inverse_friends.include?(current_user) %>
+      <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+    <% else %>
+      <%= link_to "Remove Friend", friendship_path(:id => user.inverse_friendships.find_by(user_id: current_user)), :method => :delete %>
+    <% end %>
+  </p>
+  <br>
+<% end %>

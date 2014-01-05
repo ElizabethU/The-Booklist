@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Booklist</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="titlebar">
+    <div class="title">The <a style=color:#F5FCFF>Book</a>l<a style=color:#F5FCFF>is</a>t</div>
+    <div class="tagline">We Kerri more books</div>
+  </div>
+  <ul class="user_nav">
+    <li>
+      <%= link_to "Browse Popular Titles", books_path %>
+    </li>
+    <li class="search_bar">
+      <%= form_tag search_books_path, :method => 'get' do %>
+          <%= text_field_tag :search, nil, placeholder: "Title/Author" %>
+          <%= submit_tag "Let's go book hunting!" %>
+      <% end %>
+    </li>
+    <li class="log_in_status">
+      <% if current_user %>
+        Logged in as <%= link_to current_user.name, user_path(current_user) %> (<%= link_to "Log out", log_out_path %>)
+      <% else %>
+        <%= link_to "Sign In", log_in_path %> 
+        <%= link_to "Sign Up", sign_up_path %>
+      <% end %>
+    </li>
+  </ul>
+
+<%= notice %>
+<div class="body_box">
+
+<%= yield %>
+
+</div>
+
+</body>
+
+</html>

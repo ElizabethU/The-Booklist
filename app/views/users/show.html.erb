@@ -1,0 +1,43 @@
+<h1><%= @user.name %></h1>
+<p><%= @user.email %></p>
+<p><h2><%= @user.name %>'s Friends</h2></p>
+<ul>
+  <% for friendship in @user.friendships %>
+    <li>
+      <%= link_to friendship.friend.name, friendship.friend %>
+      (<%= link_to "remove", friendship, :method => :delete %>)
+    </li>
+  <% end %>
+</ul>
+  <% if @user.friendships.empty? %>
+    <%= @user.name %> doesn't have any friends yet!
+  <% end %>
+<% if @user == current_user %>
+  <p>
+    <div class="search_bar">
+    <%= form_tag search_users_path, :method => 'get' do %>
+      <p>
+        <%= text_field_tag :search, nil, placeholder: "You do have friends, right?" %>
+        <%= submit_tag "Let's find them!" %>
+      </p>
+    <% end %>
+    </div>
+  </p>
+<% end %>
+<h2>Friended by Users</h2>
+<ul>
+  <% for user in @user.inverse_friends %>
+    <li><%= user.name %></li>
+  <% end %>
+</ul>
+  <% if @user.inverse_friendships.empty? %>
+    <%= @user.name %> doesn't have any followers yet!
+  <% end %>
+<p><h2><%= @user.name %>'s Bookshelves!</h2></p>
+<% @user.bookcases.each do |bookcase| %>
+  <hr><p><%= link_to bookcase.name, bookcase %> has <%= bookcase.books.count %> books.
+  </p><br>
+  <% bookcase.books.take(6).each do |book| %>
+    <img src=<%= book.image_link %> >
+  <% end %>
+<% end %>

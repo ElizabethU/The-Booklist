@@ -1,0 +1,59 @@
+.titlebar {
+  background-color: #164354;
+  color: #B0D0D0;
+  padding-left: 30px;
+  padding-top: 10px;
+  outline: 8px solid #164354;
+}
+
+.title {
+  font-size: 54px;
+  padding-bottom: 0px;
+  text-shadow: 2px 2px 10px #000000, -2px -2px 10px #000000, 2px -2px 10px #000000, -2px 2px 10px #000000
+}
+
+.tagline {
+  padding-left: 35px;
+  padding-bottom: 10px;
+  text-shadow: 2px 2px 10px #000000, -2px -2px 10px #000000, 2px -2px 10px #000000, -2px 2px 10px #000000;
+}
+
+ul.user_nav {
+  outline: 8px solid #BAD4DE;
+  background-color: #BAD4DE;
+  padding-right: 20px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-bottom: 70px;
+  margin-top: 8px
+}
+
+ul.user_nav li {
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  margin: 60;
+}
+
+ul.user_nav li.log_in_status {
+  text-align: right;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: #164354;
+}
+
+.body_box {
+  width: 660px;
+  background-color: #5A8899;
+  margin: auto;
+  padding: 50px;
+}
+
+body {
+  background-color: #F0F4F6
+}
