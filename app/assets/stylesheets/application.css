@@ -48,6 +48,7 @@ a {
 }
 
 .body_box {
+  border-radius: 8px;
   width: 660px;
   background-color: #5A8899;
   margin: auto;

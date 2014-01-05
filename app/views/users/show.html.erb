@@ -26,8 +26,8 @@
 <% end %>
 <h2>Friended by Users</h2>
 <ul>
-  <% for user in @user.inverse_friends %>
-    <li><%= user.name %></li>
+  <% for stalker in @user.inverse_friends %>
+    <li><%= link_to stalker.name, stalker %></li>
   <% end %>
 </ul>
   <% if @user.inverse_friendships.empty? %>
