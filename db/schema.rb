@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140104203636) do
+ActiveRecord::Schema.define(version: 20140105214340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20140104203636) do
     t.string   "publisher"
     t.string   "published_date"
     t.text     "description"
-    t.integer  "isbn"
+    t.string   "isbn"
     t.integer  "page_count"
     t.string   "categories"
     t.float    "average_rating"
