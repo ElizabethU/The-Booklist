@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+  validates_presence_of :name, :email
+  validates             :name, :email, uniqueness: true 
+  validates             :name, length: { minumum: 3, maximum: 30 }
+  validates_format_of   :email, :with => /\w+@\w+\.\w+/i
+
   has_secure_password
   has_many :bookcases
   has_many :friendships
