@@ -28,6 +28,9 @@ AdaReads::Application.routes.draw do
     end
   end
   resources :bookcases, only: [:show]
+  resources :bookcase_books
+  delete "bookcase_book/:bookcase_id/:book_id" => "bookcase_books#destroy", :as => "delete_bookcase_book"
+  patch "bookcase_book/:bookcase_id/:book_id" => "bookcase_books#update", :as => "move_bookcase_book"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

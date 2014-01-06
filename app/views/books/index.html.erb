@@ -1,4 +1,4 @@
-<h1>Books!</h1>
+<h1>Here are some Books!</h1>
 <table>
   <!-- Sorted by popularity! Much excite! -->
   <!-- .sort_by{|book| book.bookcases.count }.reverse -->
@@ -14,7 +14,7 @@
         <h3><%= book.title %></h3>
         by <%= book.authors %>
       </div>
-    <% if current_user %>
+    <% if current_user and not current_user.has_it(book) %>
       <%= form_tag books_path do %>
         <%= hidden_field_tag "isbn", book.isbn %>
         <%= hidden_field_tag "bookcase_id", current_user.bookcases.where(name: "Wishlist").first.id %>

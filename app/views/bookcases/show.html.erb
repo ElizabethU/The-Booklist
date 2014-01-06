@@ -15,9 +15,11 @@
         <p>published <%= book.published_date %></p>
         <p><%= book.description %></p>
       </div>
-    <% if current_user %>
-      <p>Move to other bookcase</p>
-      <p>Remove book</p>
+    <% if current_user%>
+      <% if @bookcase.name == "Wishlist" %>
+        <%= button_to "Move to Completed Books", move_bookcase_book_path(@bookcase.id, book.id), :method => :patch %>
+      <% end %>
+      <%= button_to "Remove Book from Bookcase", delete_bookcase_book_path(@bookcase.id, book.id), :method => :delete %>
     <% end %>
     </td>
   </tr>

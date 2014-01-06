@@ -9,4 +9,16 @@ class User < ActiveRecord::Base
   def self.search(query)
     User.where(["name LIKE ? OR email LIKE ?", "%#{query}%", "%#{query}%"])
   end
+
+  def has_it(book)
+    i_have_it = false
+    bookcases.each do |bookcase|
+      bookcase.books.each do |libro|
+        if libro.isbn == book.isbn
+          i_have_it = true
+        end
+      end
+    end
+    i_have_it
+  end
 end
