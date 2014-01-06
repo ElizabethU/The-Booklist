@@ -60,6 +60,5 @@ describe User do
         user.password_confirmation = nil
         expect(user).to_not be_valid
       end
-
   end
 end
